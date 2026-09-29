@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Card Wizard</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="page">
+  <h1>Card Wizard</h1>
+  <p id="nav"><a href="#search" id="nav-search">Search</a> | <a href="#add" id="nav-add">Add files</a> | <span id="status"></span></p>
+
+  <div id="view-search">
+    <form id="search-form">
+      <input id="q" type="text" placeholder="Search for a card. Words or a full sentence." autofocus autocomplete="off">
+      <button type="submit">Search</button>
+      <br>
+      <label><input type="radio" name="mode" value="best" checked> Best match</label>
+      <label><input type="radio" name="mode" value="keyword"> Exact words</label>
+      <label><input type="radio" name="mode" value="meaning"> Meaning</label>
+    </form>
+    <div id="summary"></div>
+    <div id="results"></div>
+    <p><button id="more" style="display:none">Show more</button></p>
+  </div>
+
+  <div id="view-add" style="display:none">
+    <h2>Upload files</h2>
+    <p>Word, PDF, Google Docs (download as .docx or .html), RTF, ODT, HTML, or text. Several at once is fine.</p>
+    <input id="files" type="file" multiple>
+    <button id="upload">Upload</button>
+
+    <h2>Paste text</h2>
+    <p>Copy from Google Docs or Word and paste here. Highlighting is kept.</p>
+    <input id="paste-name" type="text" placeholder="Name for this paste (optional)">
+    <div id="paste-box" contenteditable="true"></div>
+    <button id="paste-go">Add pasted text</button>
+
+    <div id="upload-out"></div>
+
+    <h2>Library</h2>
+    <div id="docs"></div>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+body { font-family: Georgia, "Times New Roman", serif; font-size: 16px; color: #000; background: #fff; margin: 0; }
+#page { max-width: 820px; margin: 0 auto; padding: 16px; }
+h1 { font-size: 24px; margin: 0 0 4px 0; }
+h2 { font-size: 18px; margin: 24px 0 6px 0; }
+a { color: #00e; }
+#nav { margin: 0 0 16px 0; }
+#status { color: #666; font-size: 13px; }
+#q { width: 70%; font-size: 16px; padding: 4px; }
+button { font-size: 14px; padding: 3px 8px; }
+label { font-size: 14px; margin-right: 8px; }
+#summary { margin: 10px 0; color: #444; font-size: 14px; }
+.card { border-top: 1px solid #999; padding: 10px 0; }
+.tag { font-weight: bold; }
+.cite { font-size: 13px; color: #333; margin: 3px 0 6px 0; }
+.spoken { margin: 4px 0; }
+mark { background: #ff0; color: #000; }
+.ctx { text-decoration: underline; }
+.ctx-b { font-weight: bold; }
+.plain { color: #666; font-size: 14px; }
+.body p { margin: 0 0 8px 0; }
+.meta { font-size: 12px; color: #666; margin-top: 4px; }
+.actions button { margin-right: 4px; }
+#paste-box { border: 1px solid #999; min-height: 80px; max-height: 200px; overflow: auto; padding: 4px; margin: 4px 0; }
+#paste-name { width: 60%; padding: 3px; }
+table { border-collapse: collapse; font-size: 14px; }
+td, th { border: 1px solid #bbb; padding: 3px 8px; text-align: left; }
+.warn { color: #900; }
