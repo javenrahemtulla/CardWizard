@@ -5,8 +5,12 @@ which words were highlighted, and lets you search by keyword or by meaning.
 
 ## How cards are read
 
-- **Tag**: the line above the cite. Heading 4 is used as extra evidence, never required.
-- **Cite**: found by its shape (`Author 19 [credentials, date, "Title," url]`), so it works without styles.
+- **Tag**: the line above the cite. Heading 4, bold, or a larger font count as evidence. If the file
+  has formatting but the line above a cite has none of it, the card is stored with no tag.
+- **Cite**: found by its shape, so it works without styles. Recognised openings: `Author 19 [...]`,
+  `Author 26. Bio. "Title"`, `By Name [...]`, `From Org [...]`, `Name is a ...`, `Author, date, "Title"`.
+  A URL, bracket, quoted title, or access note is required, so numbered lists and sentences that
+  merely start with a year are not mistaken for cites.
 - **Body**: everything after the cite until the next tag or heading.
 - Three tiers of text, in every file type:
   - **Highlighted**: the words actually spoken. This is what search weighs most.

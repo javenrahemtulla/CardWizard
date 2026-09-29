@@ -47,7 +47,7 @@ function cardHtml(c) {
   var flag = c.method === "heuristic" ? " | tag guessed from layout" : "";
   if (!c.cite_ok) flag += " | cite not recognized";
   return '<div class="card" id="card-' + c.id + '">' +
-    '<div class="tag">' + esc(c.tag) + "</div>" +
+    '<div class="tag">' + (c.tag ? esc(c.tag) : '<span class="plain">(no tag in file)</span>') + "</div>" +
     '<div class="cite">' + citeHtml(c) + "</div>" +
     '<div class="spoken">' + (c.spoken ? "<mark>" + esc(c.spoken) + "</mark>" : '<span class="plain">(no highlighted text)</span>') + "</div>" +
     '<div class="body" id="body-' + c.id + '"></div>' +
@@ -102,9 +102,9 @@ $("results").addEventListener("click", function (e) {
 });
 
 function copyCard(c, btn) {
-  var html = "<h4>" + esc(c.tag) + "</h4><p>" + citeHtml(c) + "</p>" +
+  var html = (c.tag ? "<h4>" + esc(c.tag) + "</h4>" : "") + "<p>" + citeHtml(c) + "</p>" +
     c.body.map(function (p) { return "<p>" + runsHtml(p, true) + "</p>"; }).join("");
-  var text = c.tag + "\n" + c.cite + "\n\n" + c.body.map(function (p) { return p.map(function (r) { return r[0]; }).join(""); }).join("\n\n");
+  var text = (c.tag ? c.tag + "\n" : "") + c.cite + "\n\n" + c.body.map(function (p) { return p.map(function (r) { return r[0]; }).join(""); }).join("\n\n");
   var done = function () { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = "Copy"; }, 1500); };
   if (navigator.clipboard && window.ClipboardItem) {
     navigator.clipboard.write([new ClipboardItem({

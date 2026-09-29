@@ -136,12 +136,15 @@ def read_pdf(data: bytes):
     paras = []
     cur = []  # runs
 
+    sizes = []  # (size, highlighted) of visible characters in the current paragraph
+
     def flush():
-        nonlocal cur
+        nonlocal cur, sizes
         runs = fill_read_gaps(merge_runs(cur))
         if "".join(r[0] for r in runs).strip():
-            paras.append(Para(runs, 0))
-        cur = []
+            plain = sorted(s for s, hl in sizes if not hl) or sorted(s for s, _ in sizes)
+            paras.append(Para(runs, 0, plain[len(plain) // 2] if plain else None))
+        cur, sizes = [], []
 
     pages = [_page_lines(page) for page in doc]
     ends = sorted(l["x1v"] for ls in pages for l in ls if l["x1v"] - l["x0"] > 100)
@@ -166,6 +169,7 @@ def read_pdf(data: bytes):
                 if not last[0].isspace():
                     runs.append((" ", last[1], False))
             cur.extend(runs)
+            sizes.extend((c[4], c[2] == 2) for c in ln["chars"] if c[0].strip())
             ln["page"] = pno
             prev = ln
     flush()

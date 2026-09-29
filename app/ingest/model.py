@@ -10,12 +10,31 @@ from dataclasses import dataclass, field
 
 @dataclass
 class Para:
-    runs: list  # list of (text, read, bold)
+    runs: list  # list of (text, tier, bold)
     level: int = 0  # heading level 1-9, 0 = body text
+    size: float = None  # typical font size of unhighlighted text (PDF only)
 
     @property
     def text(self):
         return "".join(r[0] for r in self.runs)
+
+    def frac(self, pred):
+        """Fraction of visible characters in runs matching pred(run)."""
+        tot = hit = 0
+        for r in self.runs:
+            n = sum(1 for c in r[0] if not c.isspace())
+            tot += n
+            if pred(r):
+                hit += n
+        return hit / tot if tot else 0.0
+
+    @property
+    def bold_frac(self):
+        return self.frac(lambda r: r[2] and r[1] != 2)
+
+    @property
+    def hl_frac(self):
+        return self.frac(lambda r: r[1] == 2)
 
 
 @dataclass
