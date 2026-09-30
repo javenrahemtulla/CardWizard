@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Card Wizard</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="page">
+  <h1>Card Wizard</h1>
+  <p id="nav"><a href="#search" id="nav-search">Search</a> | <a href="#library">Library</a> | <a href="#" id="add-link" target="_blank">Add files</a> | <span id="status">Loading...</span></p>
+
+  <div id="view-search">
+    <form id="search-form">
+      <input id="q" type="text" placeholder="Search for a card. Words or a full sentence." autofocus autocomplete="off">
+      <button type="submit">Search</button>
+      <br>
+      <label><input type="radio" name="mode" value="best" checked> Best match</label>
+      <label><input type="radio" name="mode" value="keyword"> Exact words</label>
+      <label><input type="radio" name="mode" value="meaning"> Meaning</label>
+    </form>
+    <div id="summary"></div>
+    <div id="results"></div>
+    <p><button id="more" style="display:none">Show more</button></p>
+  </div>
+
+  <div id="view-library" style="display:none">
+    <h2>Add or remove files</h2>
+    <p>Files live in the <b>incoming</b> folder of the GitHub repository.
+      <a href="#" id="add-link2" target="_blank">Add files</a> (drag them onto the page, then click Commit).
+      To remove a file, open it in the <a href="#" id="folder-link" target="_blank">incoming folder</a> on GitHub and delete it.
+      The site updates a few minutes after a change.</p>
+    <h2>Files in the library</h2>
+    <div id="docs"></div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

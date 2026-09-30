@@ -30,6 +30,18 @@ Data (SQLite + originals) is stored in `./data` or `$CARDWIZARD_DATA`.
 Meaning search needs the BGE-small model (about 100 MB, downloaded on first run, then offline).
 If it cannot load, the site falls back to exact-word search and says so.
 
+## Free static site on GitHub Pages
+
+No server. Drag files into the `incoming/` folder on GitHub; a GitHub Action turns them into card data
+(`docs/data/`) and publishes `docs/` as a website. Search runs in the visitor's browser.
+
+- One-time: repository **Settings > Pages > Source: GitHub Actions**.
+- Add files: open `incoming/` on GitHub, **Add file > Upload files**, commit. Delete a file there to
+  remove its cards. The site updates a few minutes later (watch the **Actions** tab).
+- Everything is public: the repository, the original files, and the site.
+- Not searched in this mode: unread plain text (only tag, cite, highlighted and underlined/bold text).
+- Locally: `python tools/build_site.py sync incoming` builds the same data; serve `docs/` with any web server.
+
 ## Run on your own computer with a public address
 
 Data stays on your computer (`./data`). A tunnel gives it an `https://` address that anyone with the

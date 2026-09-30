@@ -1,0 +1,4 @@
+lxml
+pymupdf
+fastembed
+numpy
