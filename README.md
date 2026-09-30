@@ -30,6 +30,19 @@ Data (SQLite + originals) is stored in `./data` or `$CARDWIZARD_DATA`.
 Meaning search needs the BGE-small model (about 100 MB, downloaded on first run, then offline).
 If it cannot load, the site falls back to exact-word search and says so.
 
+## Run on your own computer with a public address
+
+Data stays on your computer (`./data`). A tunnel gives it an `https://` address that anyone with the
+password can open while your computer is on and the script is running.
+
+1. Run `./start.sh` (Mac/Linux) or double-click `start.bat` (Windows). Pick a password when asked.
+2. Install [Tailscale](https://tailscale.com/download), sign in, then in a terminal run
+   `tailscale funnel 8000`. It prints a stable address like `https://your-computer.your-tailnet.ts.net`.
+   (Funnel may need to be switched on for your account first; Tailscale prints a link if so.)
+
+Alternatives: `cloudflared tunnel --url http://localhost:8000` (free, no account, but the address
+changes every run), or a Cloudflare named tunnel on a domain you own (stable, custom name).
+
 ## Deploy
 
     docker build -t cardwizard .
