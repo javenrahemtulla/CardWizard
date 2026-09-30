@@ -1,0 +1,15 @@
+# Render Blueprint: one web service built from the Dockerfile, with a persistent disk for the library.
+services:
+  - type: web
+    name: cardwizard
+    runtime: docker
+    plan: starter          # upgrade to "standard" if the service is killed for running out of memory
+    branch: claude/tender-johnson-c5imou
+    healthCheckPath: /healthz
+    disk:
+      name: cardwizard-data
+      mountPath: /data     # SQLite database and uploaded originals live here
+      sizeGB: 10
+    envVars:
+      - key: SITE_PASSWORD  # you type this in the Render dashboard; anyone visiting must enter it
+        sync: false
